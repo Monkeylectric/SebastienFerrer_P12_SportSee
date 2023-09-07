@@ -1,0 +1,12 @@
+.title_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.title {
+    font-size: 48px;
+    font-weight: 500;
+}
+.title .colored_text {
+    color: #FF0101;
+}
