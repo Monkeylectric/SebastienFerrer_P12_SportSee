@@ -1,6 +1,8 @@
 import './App.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from './pages/Home/Home';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Error from './pages/Error/Error';
 
 import { getUserById, getUserActivityById, getUserAverageSession, getUserPerformance } from "./services/mock/data.mock.service.js";
 // import { getUserById, getUserActivityById, getUserAverageSession, getUserPerformance } from "./services/data.service.js";
@@ -9,9 +11,13 @@ function App() {
     const router = createBrowserRouter([
         {
             path: "/",
+            element: <Home />,
+        },
+        {
+            path: "/dashboard/:id",
             element: <Dashboard />,
             loader: async ({ params }) => {
-                const userId = 12;
+                const userId = params.id;
 
                 const USER_MAIN_DATA = await getUserById(parseInt(userId));
                 const USER_ACTIVITY_SESSIONS = await getUserActivityById(parseInt(userId));
@@ -29,13 +35,11 @@ function App() {
                     USER_PERFORMANCE
                 };
             },
-            // errorElement: "Error",
+            errorElement: <Error number="404" />,
         },
         {
-            path: "/profil",
-            //element:
-            //loader:
-            //error:
+            path: "*",
+            element: <Error number="404" />
         },
     ]);
 
