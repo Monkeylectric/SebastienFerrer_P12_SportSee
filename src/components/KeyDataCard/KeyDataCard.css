@@ -1,0 +1,24 @@
+.key_data_container {
+    width: 258px;
+    height: 124px;
+    border-radius: 5px;
+    background-color: #FBFBFB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.key_data_img_container {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key_data_info_value {
+    font-size: 20px;
+    font-weight: 700;
+}
