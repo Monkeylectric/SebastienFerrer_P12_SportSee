@@ -24,7 +24,7 @@ function Dashboard() {
     return (
         <React.Fragment>
             <NavbarHorizontal />
-            <main>
+            <main className='main_dashboard'>
                 <NavbarVertical />
                 <section className='dashboard'>
                     <Title data={ services.USER_MAIN_DATA } />

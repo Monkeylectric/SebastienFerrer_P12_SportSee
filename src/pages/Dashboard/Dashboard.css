@@ -1,4 +1,4 @@
-main {
+.main_dashboard {
     display: flex;
     width: 100%;
     height: calc(100% - 90px);
