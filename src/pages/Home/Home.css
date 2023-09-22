@@ -1,0 +1,28 @@
+.main_home {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 90px);
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%; /*30px*/
+    padding: 2% 4%; /*50px 100px*/
+    width: 95%;
+}
+
+.dashboard_btn {
+    text-decoration: none;
+    background-color: #FF0000;
+    border-radius: 5px;
+    width: 10%;
+    padding: 2px 10px;
+    text-align: center;
+}
+.dashboard_name {
+    font-size: 1.2em;
+    color: #FFF;
+    font-weight: bold;
+}
