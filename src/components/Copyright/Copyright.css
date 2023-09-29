@@ -6,4 +6,5 @@
     color: #FFF;
     writing-mode: vertical-lr;
     text-orientation: sideways;
+    transform: rotate(180deg);
 }

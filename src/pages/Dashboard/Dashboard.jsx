@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Dashboard.css';
 
 import NavbarHorizontal from '../../components/NavbarHorizontal/NavbarHorizontal';
@@ -9,12 +9,6 @@ import AverageLineChart from '../../components/AverageLineChart/AverageLineChart
 import PerformanceRadarChart from '../../components/PerformanceRadarChart/PerformanceRadarChart';
 import ScoreRadialBarChart from '../../components/ScoreRadialBarChart/ScoreRadialBarChart';
 import KeyDataCard from '../../components/KeyDataCard/KeyDataCard';
-
-// import { getUserActivityById, getUserAverageSession, getUserPerformance } from "../../services/mock/data.mock.service.js";
-
-// const USER_ACTIVITY_SESSIONS = getUserActivityById(12).sessions;
-// const USER_AVERAGE_SESSIONS = getUserAverageSession(12).sessions;
-// const USER_PERFORMANCE = getUserPerformance(12);
 
 import { useLoaderData } from "react-router-dom";
 
@@ -33,20 +27,21 @@ function Dashboard() {
                             <div className='statistics_main_charts'>
                                 <div className='weight_chart'>
                                     <span className='weight_chart_title'>Activité quotidienne</span>
-                                    <WeightBarChart data={ services.USER_ACTIVITY_SESSIONS.sessions } />
+                                    <WeightBarChart data={ services.USER_ACTIVITY_SESSIONS } />
                                 </div>
                             </div>
                             <div className='statistics_sub_charts'>
                                 <div className='average_chart'>
                                     <span className='average_chart_title'>Durée moyenne des sessions</span>
-                                    <AverageLineChart data={ services.USER_AVERAGE_SESSIONS.sessions } />
+                                    <AverageLineChart data={ services.USER_AVERAGE_SESSIONS } />
                                 </div>
                                 <div className='performance_chart'>
                                     <PerformanceRadarChart data={ services.USER_PERFORMANCE } />
                                 </div>
                                 <div className='score_chart'>
-                                    <ScoreRadialBarChart data={ services.USER_MAIN_DATA.todayScore || services.USER_MAIN_DATA.score } />
-                                    <span className='score_chart_value'><b>{(services.USER_MAIN_DATA.todayScore || services.USER_MAIN_DATA.score) * 100}%</b><br /> de votre objectif</span>
+                                    <span className='score_chart_title'>Score</span>
+                                    <ScoreRadialBarChart data={ services.USER_MAIN_DATA.score } />
+                                    <span className='score_chart_value'><b>{(services.USER_MAIN_DATA.score) * 100}%</b><br /> de votre objectif</span>
                                 </div>
                             </div>
                         </div>

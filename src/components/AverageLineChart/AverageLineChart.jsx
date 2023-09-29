@@ -1,10 +1,8 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-// import './AverageLineChart.css';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Rectangle } from 'recharts';
 
 function AverageLineChart(props) {
     const average = props.data;
-    const letterDays = ["L", "M", "M", "J", "V", "S", "D"];
 
     const CustomTooltip = ({ active, payload, label }) => {
         const customTooltipStyle = {
@@ -28,6 +26,10 @@ function AverageLineChart(props) {
         return null;
     };
 
+    const CustomizedCursor = ({ points }) => {
+		return <Rectangle fill="black" opacity={0.4} x={points[1].x} width={500} height={300} />;
+	}
+
     return (
         <ResponsiveContainer width="100%" height="100%">
             <LineChart
@@ -41,12 +43,13 @@ function AverageLineChart(props) {
                     left: 10,
                 }}
             >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey={(data) => letterDays[data.day - 1]} stroke="#FFF" />
+                <XAxis axisLine={false} dataKey="day" stroke="#FFF" />
+                <YAxis hide={true} dataKey="sessionLength" padding={{top : 60, bottom : 30}} />
                 <Tooltip 
                     content={<CustomTooltip />}
+                    cursor={<CustomizedCursor />}
                 />
-                <Line type="monotone" dataKey="sessionLength" stroke="#FFF" activeDot={{ r: 8 }} />
+                <Line type="natural" dataKey="sessionLength" stroke="#FFF" strokeWidth={2} dot={false} activeDot={{ r: 8 }} />
             </LineChart>
         </ResponsiveContainer>
     );

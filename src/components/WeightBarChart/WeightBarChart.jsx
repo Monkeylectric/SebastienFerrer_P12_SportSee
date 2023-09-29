@@ -1,6 +1,5 @@
 import React from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-// import './WeightBarChart.css';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function WeightBarChart(props) {
     const CustomTooltip = ({ active, payload, label }) => {
@@ -29,9 +28,26 @@ function WeightBarChart(props) {
     return (
         <ResponsiveContainer width="100%" height="100%">
             <BarChart width={600} height={400} data={props.data}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis axisLine={false} dataKey="day"></XAxis>
-                <YAxis axisLine={false} orientation="right" />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis 
+                    axisLine={false} 
+                    dataKey="day" 
+                />
+                <YAxis 
+                    axisLine={false} 
+                    yAxisId="kilogram" 
+                    orientation="right" 
+                    dataKey="kilogram" 
+                    domain={["dataMin - 1", "dataMax"]} 
+                    tickCount="4"
+                    tickSize="0"
+					tickMargin="30"
+                />
+                <YAxis 
+                    yAxisId="calories" 
+                    dataKey="calories" 
+                    hide={true} 
+                />
                 <Tooltip 
                     content={<CustomTooltip />}
                 />
@@ -43,6 +59,7 @@ function WeightBarChart(props) {
                     iconSize={8} 
                 />
                 <Bar 
+                    yAxisId="kilogram"
                     dataKey="kilogram" 
                     name="Poids (kg)" 
                     unit="kg" 
@@ -51,6 +68,7 @@ function WeightBarChart(props) {
                     radius={[3, 3, 0, 0]}
                 />
                 <Bar 
+                    yAxisId="calories"
                     dataKey="calories" 
                     name="Calories brûlées (kCal)" 
                     unit="kCal" 
