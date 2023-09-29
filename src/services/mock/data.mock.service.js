@@ -1,5 +1,5 @@
 import DATA from "./data.mock.js";
-import { UserActivityFormat, UserAverageSessionFormat, UserFormat, UserPerformanceFoomat } from "./utils";
+import { User } from "../utils.js";
 
 export const getUserById = (id) => {
     try {
@@ -9,7 +9,7 @@ export const getUserById = (id) => {
                 .shift()
 
             if (!USER_MAIN_DATA_MOCK) reject(new Error('Oops, une erreur est survenue...'));
-            resolve(UserFormat(USER_MAIN_DATA_MOCK));
+            resolve(new User(USER_MAIN_DATA_MOCK).UserFormat());
         });
 
         return promise;
@@ -26,7 +26,7 @@ export const getUserActivityById = (id) => {
                 .shift()
 
             if (!USER_ACTIVITY_MOCK) reject(new Error('Oops, une erreur est survenue...'));
-            resolve(UserActivityFormat(USER_ACTIVITY_MOCK.sessions));
+            resolve(new User(USER_ACTIVITY_MOCK.sessions).UserActivityFormat());
         });
 
         return promise;
@@ -43,7 +43,7 @@ export const getUserAverageSession = (id) => {
                 .shift()
 
             if (!USER_AVERAGE_SESSIONS_MOCK) reject(new Error('Oops, une erreur est survenue...'));
-            resolve(UserAverageSessionFormat(USER_AVERAGE_SESSIONS_MOCK.sessions));
+            resolve(new User(USER_AVERAGE_SESSIONS_MOCK.sessions).UserAverageSessionFormat());
         });
 
         return promise;
@@ -60,7 +60,7 @@ export const getUserPerformance = (id) => {
                 .shift()
 
             if (!USER_PERFORMANCE_MOCK) reject(new Error('Oops, une erreur est survenue...'));
-            resolve(UserPerformanceFoomat(USER_PERFORMANCE_MOCK));
+            resolve(new User(USER_PERFORMANCE_MOCK).UserPerformanceFoomat());
         });
 
         return promise;

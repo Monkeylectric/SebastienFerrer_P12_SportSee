@@ -1,11 +1,11 @@
 import axios from "axios";
-import { UserActivityFormat, UserAverageSessionFormat, UserFormat, UserPerformanceFoomat } from "./utils";
+import { User } from "./utils";
 
 export const getUserById = async (userId) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${userId}`);
 
-        return UserFormat(response.data.data);
+        return new User(response.data.data).UserFormat();
     } catch (error) {
         throw error;
     }
@@ -15,7 +15,7 @@ export const getUserActivityById = async (userId) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${userId}/activity`);
 
-        return UserActivityFormat(response.data.data.sessions);
+        return new User(response.data.data.sessions).UserActivityFormat();
     } catch (error) {
         throw error;
     }
@@ -25,7 +25,7 @@ export const getUserAverageSession = async (userId) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${userId}/average-sessions`);
         
-        return UserAverageSessionFormat(response.data.data.sessions);
+        return new User(response.data.data.sessions).UserAverageSessionFormat();
     } catch (error) {
         throw error;
     }
@@ -35,7 +35,7 @@ export const getUserPerformance = async (userId) => {
     try {
         const response = await axios.get(`http://localhost:3000/user/${userId}/performance`);
 
-        return UserPerformanceFoomat(response.data.data);
+        return new User(response.data.data).UserPerformanceFoomat();
     } catch (error) {
         throw error;
     }
