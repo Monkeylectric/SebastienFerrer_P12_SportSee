@@ -27,7 +27,7 @@ function AverageLineChart(props) {
     };
 
     const CustomizedCursor = ({ points }) => {
-		return <Rectangle fill="black" opacity={0.4} x={points[1].x} width={500} height={300} />;
+		return <Rectangle fill="black" opacity={0.4} x={points[1].x} width={500} height={500} />;
 	}
 
     return (
